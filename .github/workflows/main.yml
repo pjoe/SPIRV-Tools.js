@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Build the Docker image
+        run: docker-compose build
+      - name: Build web
+        run: docker-compose up
+      - name: Build node-devel
+        run: docker-compose run --rm build ./build.sh
+      - name: Run tests
+        run: node test/test.js
