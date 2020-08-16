@@ -1,5 +1,5 @@
 ARG EMSDK_VERSION
-FROM trzeci/emscripten:sdk-tag-${EMSDK_VERSION}-64bit
+FROM trzeci/emscripten:${EMSDK_VERSION}-upstream
 
 ARG DEBIAN_FRONTEND=noninteractive
 

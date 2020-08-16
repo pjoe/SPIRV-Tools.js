@@ -10,7 +10,7 @@ build() {
     mkdir -p build/$type
     pushd build/$type
     echo $args
-    emconfigure cmake \
+    emcmake cmake \
         -DCMAKE_BUILD_TYPE=Release \
         $args \
         ../../SPIRV-Tools
@@ -18,6 +18,7 @@ build() {
 
     echo Building js interface
     emcc \
+        --bind \
         -I../../SPIRV-Tools/include \
         -std=c++11 \
         ../../src/spirv-tools.cpp \
@@ -25,7 +26,8 @@ build() {
         -o spirv-tools.js \
         -s MODULARIZE \
         -s EXPORTED_RUNTIME_METHODS='["cwrap"]' \
-        -Oz
+        -Oz \
+        --post-js ../../src/spirv-tools.js
 
     popd
     mkdir -p dist/$type
