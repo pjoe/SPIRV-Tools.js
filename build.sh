@@ -26,8 +26,7 @@ build() {
         -o spirv-tools.js \
         -s MODULARIZE \
         -s EXPORTED_RUNTIME_METHODS='["cwrap"]' \
-        -Oz \
-        --post-js ../../src/spirv-tools.js
+        -Oz
 
     popd
     mkdir -p dist/$type

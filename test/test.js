@@ -12,6 +12,7 @@ const test = async () => {
   const buffer = await readFile(SPV_PATH);
   const disFileResult = spv.dis(
     buffer,
+    spv.SPV_ENV_UNIVERSAL_1_3,
     spv.SPV_BINARY_TO_TEXT_OPTION_INDENT |
       spv.SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES |
       spv.SPV_BINARY_TO_TEXT_OPTION_COLOR
@@ -28,12 +29,17 @@ const test = async () => {
       %int = OpTypeInt 32 1 
      %spec = OpSpecConstant %int 0 
     %const = OpConstant %int 42`;
-  const asResult = spv.as(source);
+  const asResult = spv.as(
+    source,
+    spv.SPV_ENV_UNIVERSAL_1_3,
+    spv.SPV_TEXT_TO_BINARY_OPTION_NONE
+  );
   console.log(`as returned ${asResult.byteLength} bytes`);
 
   // re-disassemble
   const disResult = spv.dis(
     asResult,
+    spv.SPV_ENV_UNIVERSAL_1_3,
     spv.SPV_BINARY_TO_TEXT_OPTION_INDENT |
       spv.SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES |
       spv.SPV_BINARY_TO_TEXT_OPTION_COLOR
