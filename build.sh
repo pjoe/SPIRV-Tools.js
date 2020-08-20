@@ -54,6 +54,4 @@ build web\
     -DSPIRV_SKIP_TESTS=ON\
     -DSPIRV_SKIP_EXECUTABLES=ON
 
-echo Building js interface
-
 wc -c dist/*/*
