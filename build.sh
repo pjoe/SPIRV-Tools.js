@@ -25,12 +25,11 @@ build() {
         source/libSPIRV-Tools.a \
         -o spirv-tools.js \
         -s MODULARIZE \
-        -s EXPORTED_RUNTIME_METHODS='["cwrap"]' \
         -Oz
 
     popd
     mkdir -p dist/$type
-    #cp glslang.d.ts dist/$type/
+    cp src/spirv-tools.d.ts dist/$type/
 
     cp build/$type/spirv-tools.js dist/$type/
     gzip -9 -k -f dist/$type/spirv-tools.js
