@@ -14,7 +14,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         $args \
         ../../SPIRV-Tools
-    emmake make -j $(( $NUM_CORES )) SPIRV-Tools-static
+    emmake make -j $(( $NUM_CORES )) SPIRV-Tools
 
     echo Building js interface
     emcc \
