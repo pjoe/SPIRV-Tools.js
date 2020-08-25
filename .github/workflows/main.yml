@@ -20,3 +20,8 @@ jobs:
         run: docker-compose run --rm build ./build.sh
       - name: Run tests
         run: node test/test.js
+      - name: Publish to npm
+        uses: primer/publish@v2.0.0
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

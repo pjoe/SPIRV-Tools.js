@@ -1,6 +1,6 @@
 {
   "name": "spirv-tools",
-  "version": "0.20.4",
+  "version": "20.4.0",
   "license": "Apache-2.0",
   "main": "dist/web/spirv-tools",
   "types": "dist/web/spirv-tools.d.ts",
